@@ -5,7 +5,6 @@ class_name AirState
 @export var ground_state : State
 @export var landing_state : State
 @export var wall_state : State
-
 func state_process(delta : float):
 	
 	if(character.is_on_floor()):
@@ -14,6 +13,7 @@ func state_process(delta : float):
 		
 		
 	elif(character.is_near_wall()):
+		print("Se va a pared")
 		next_state = wall_state
 		playback.travel("wall_land")
 	else: 
@@ -23,3 +23,5 @@ func state_process(delta : float):
 			character.velocity.y += character.fall_gravity*delta
 			
 	
+
+

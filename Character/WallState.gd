@@ -4,6 +4,7 @@ class_name WallState
 
 @export var landing_state : State
 @export var air_state : State 
+@export var wall_check : RayCast2D
 
 func state_process(delta : float) :
 	character.velocity.y += (character.fall_gravity*delta)/32
@@ -28,7 +29,8 @@ func on_enter():
 
 
 func jump():
+	wall_check.rotate(PI)
 	character.velocity = Vector2.ZERO
-	next_state = air_state
 	playback.travel("jump")
 	character.velocity.y = character.jump_velocity
+	next_state = air_state

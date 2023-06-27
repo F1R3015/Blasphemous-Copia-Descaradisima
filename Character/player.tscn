@@ -483,10 +483,11 @@ script = ExtResource("11_nwd7a")
 ground_state = NodePath("../Ground")
 can_move = false
 
-[node name="Wall" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("landing_state", "air_state")]
+[node name="Wall" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("landing_state", "air_state", "wall_check")]
 script = ExtResource("12_34ydv")
 landing_state = NodePath("../Landing")
 air_state = NodePath("../Air")
+wall_check = NodePath("../../WallCheck")
 can_move = false
 
 [node name="StateDebug" type="Label" parent="." node_paths=PackedStringArray("state_machine", "wall_check")]
@@ -500,6 +501,6 @@ state_machine = NodePath("../CharacterStateMachine")
 wall_check = NodePath("../WallCheck")
 
 [node name="WallCheck" type="RayCast2D" parent="."]
-target_position = Vector2(12, 0)
+target_position = Vector2(10.167, 0)
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
