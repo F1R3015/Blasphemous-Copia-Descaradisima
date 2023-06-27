@@ -1,0 +1,8 @@
+res://Character/player.tscn
+res://Character/CharacterStateMachine.gd
+res://Character/player.gd
+res://Character/StateDebug.gd
+res://Levels/test_level.tscn
+res://Character/WallState.gd
+res://Character/AirState.gd
+res://Character/GroundState.gd
