@@ -50,9 +50,9 @@ func set_direction():
 		wall_check.rotation_degrees = 180
 
 func animation_update() -> void : 
-	if direction.x > 0 : 
+	if velocity.x > 0 : 
 		sprite.flip_h = false
-	elif direction.x < 0 :
+	elif velocity.x < 0 :
 		sprite.flip_h = true
 	animation_tree.set("parameters/Move/blend_position",velocity.x)
 
