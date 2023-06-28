@@ -18,9 +18,9 @@ func state_process(delta : float) :
 	
 
 func state_input(event : InputEvent):
-	if(event.is_action_pressed("jump") && character.is_facing_right() && Input.is_action_pressed("move_left")):
+	if(event.is_action_pressed("jump") ):
 		jump()
-	elif(event.is_action_pressed("jump") && !character.is_facing_right() && Input.is_action_pressed("move_right")):
+	elif(event.is_action_pressed("jump")):
 		jump()
 
 func on_enter():
@@ -29,7 +29,6 @@ func on_enter():
 
 
 func jump():
-	wall_check.rotate(PI)
 	character.velocity = Vector2.ZERO
 	playback.travel("jump")
 	character.velocity.y = character.jump_velocity
