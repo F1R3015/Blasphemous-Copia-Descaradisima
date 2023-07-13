@@ -179,7 +179,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_c8slg"]
 resource_name = "land"
-length = 0.8
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -337,11 +337,27 @@ tracks/2/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_f8x03"]
+resource_name = "jab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f2pcj"]
 _data = {
 "RESET": SubResource("Animation_h3jn8"),
 "falling": SubResource("Animation_q5vl2"),
 "idle": SubResource("Animation_uhakv"),
+"jab": SubResource("Animation_f8x03"),
 "jump": SubResource("Animation_yuoau"),
 "land": SubResource("Animation_c8slg"),
 "run": SubResource("Animation_eyt81"),
@@ -426,13 +442,11 @@ states/wall_land/position = Vector2(733, 35.5236)
 states/wall_slide/node = SubResource("AnimationNodeAnimation_bhm1h")
 states/wall_slide/position = Vector2(728, 110.562)
 transitions = ["Move", "jump", SubResource("AnimationNodeStateMachineTransition_xiwgb"), "land", "Move", SubResource("AnimationNodeStateMachineTransition_wsg2m"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_74ob3"), "falling", "land", SubResource("AnimationNodeStateMachineTransition_g1dq0"), "Move", "falling", SubResource("AnimationNodeStateMachineTransition_m6i6b"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_pdefc"), "wall_land", "wall_slide", SubResource("AnimationNodeStateMachineTransition_opwfu"), "wall_slide", "land", SubResource("AnimationNodeStateMachineTransition_33yxd"), "falling", "wall_land", SubResource("AnimationNodeStateMachineTransition_6n3fc"), "wall_slide", "falling", SubResource("AnimationNodeStateMachineTransition_75k0u"), "wall_slide", "jump", SubResource("AnimationNodeStateMachineTransition_1b7aq")]
-graph_offset = Vector2(-63, -74.4378)
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sjq6e"]
+graph_offset = Vector2(-63, 6.99494)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(579, 288)
+position = Vector2(796, 217)
 script = ExtResource("1_1abl0")
 speed = 200
 jump_height = 50.0
@@ -458,8 +472,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_33y3p")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sjq6e")
 parameters/Move/blend_position = 0.998495
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
@@ -478,28 +490,35 @@ ground_state = NodePath("../Ground")
 landing_state = NodePath("../Landing")
 wall_state = NodePath("../Wall")
 
-[node name="Landing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state")]
+[node name="Landing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state", "air_state")]
 script = ExtResource("11_nwd7a")
 ground_state = NodePath("../Ground")
+air_state = NodePath("../Air")
 can_move = false
 
-[node name="Wall" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("landing_state", "air_state")]
+[node name="Wall" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("landing_state", "air_state", "wall_check", "remain_in_wall", "sprite")]
 script = ExtResource("12_34ydv")
 landing_state = NodePath("../Landing")
 air_state = NodePath("../Air")
+wall_check = NodePath("../../WallCheck")
+remain_in_wall = NodePath("../../RemainInWall")
+sprite = NodePath("../../Sprite2D")
 can_move = false
 
 [node name="StateDebug" type="Label" parent="." node_paths=PackedStringArray("state_machine", "wall_check")]
 offset_left = -49.0
-offset_top = -41.0
+offset_top = -40.0
 offset_right = -4.0
-offset_bottom = -15.0
+offset_bottom = -14.0
 text = "State:"
 script = ExtResource("12_id8et")
 state_machine = NodePath("../CharacterStateMachine")
 wall_check = NodePath("../WallCheck")
 
 [node name="WallCheck" type="RayCast2D" parent="."]
-target_position = Vector2(12, 0)
+target_position = Vector2(10.1, 0)
+
+[node name="RemainInWall" type="RayCast2D" parent="."]
+target_position = Vector2(10.1, 0)
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]

@@ -24,8 +24,10 @@ func _ready() -> void:
 	animation_tree.active = true
 
 func _physics_process(delta: float) -> void:
-
+	check_direction()
 	direction = Vector2.ZERO
+	
+	
 	
 	if Input.is_action_pressed("move_left") && state_machine.check_if_can_move():
 		direction += Vector2.LEFT
@@ -38,7 +40,6 @@ func _physics_process(delta: float) -> void:
 	set_direction()
 	velocity.x = direction.x*speed
 	
-	print(wall_check.rotation_degrees)
 	move_and_slide()
 	
 
@@ -49,17 +50,21 @@ func set_direction():
 		wall_check.rotation_degrees = 180
 
 func animation_update() -> void : 
-	if direction.x > 0 : 
+	if velocity.x > 0 : 
 		sprite.flip_h = false
-		dir = Direction.RIGHT
-	elif direction.x < 0 :
+	elif velocity.x < 0 :
 		sprite.flip_h = true
-		dir = Direction.LEFT
 	animation_tree.set("parameters/Move/blend_position",velocity.x)
 
 func is_near_wall() -> bool : 
+	
 	return wall_check.is_colliding()
 
 func is_facing_right() -> bool :
 	return dir == Direction.RIGHT
 	
+func check_direction():
+	if Input.is_action_pressed("move_left"):
+		dir = Direction.LEFT
+	elif Input.is_action_pressed("move_right"):
+		dir = Direction.RIGHT

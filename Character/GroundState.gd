@@ -9,7 +9,6 @@ func state_input(event : InputEvent):
 		jump()
 		
 func jump():
-	
 	character.velocity.y = character.jump_velocity
 	next_state = air_state
 	playback.travel("jump")
