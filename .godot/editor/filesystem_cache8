@@ -1,25 +1,28 @@
-2a60927148abd1d33b818b535e306557
-::res://::1687825381
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1689272355
 icon.svg::CompressedTexture2D::674031668041400661::1687281790::1687281799::1::::<><>::
 ::res://art/::1687454757
-::res://art/player/::1687313780
+::res://art/player/::1688416920
 Character Idle 48x48.png::CompressedTexture2D::6154064261181873904::1687313775::1687313780::1::::<><>::
+Player Jab 48x48.png::CompressedTexture2D::3906023473218323072::1688416900::1688416920::1::::<><>::
 player jump 48x48.png::CompressedTexture2D::2776666227740181970::1687313775::1687313780::1::::<><>::
 player land 48x48.png::CompressedTexture2D::69173887813112688::1687313775::1687313780::1::::<><>::
+Player Punch Cross 64x64.png::CompressedTexture2D::2610372909392047135::1688416910::1688416920::1::::<><>::
+player shoot 2H 48x48.png::CompressedTexture2D::8416846234173470292::1688416717::1688416920::1::::<><>::
 run cycle 48x48.png::CompressedTexture2D::1813742916058458319::1687313775::1687313780::1::::<><>::
 wall land 48x48.png::CompressedTexture2D::2844208099232107741::1687313775::1687313780::1::::<><>::
 Wall Slide 48x48.png::CompressedTexture2D::8748396178276125157::1687313775::1687313780::1::::<><>::
 ::res://art/tiles/::1687454788
 Tiles.png::CompressedTexture2D::4260046321173628476::1687454766::1687454788::1::::<><>::
-::res://Character/::1687815985
-AirState.gd::GDScript::-1::1687813827::0::1::::AirState<>State<>::
-CharacterStateMachine.gd::GDScript::-1::1687813373::0::1::::CharacterStateMachine<>Node<>::
-GroundState.gd::GDScript::-1::1687738517::0::1::::GroundState<>State<>::
-LandingState.gd::GDScript::-1::1687798463::0::1::::LandingState<>State<>::
-player.gd::GDScript::-1::1687815955::0::1::::Player<>CharacterBody2D<>::
-player.tscn::PackedScene::616426973010021620::1687815985::0::1::::<><>::res://Character/player.gd<>uid://ctxcslneys1jg<>uid://bftbj048hbytu<>uid://8rjwdqx4gng<>uid://03uc0pgq1ahr<>uid://bgr0xr1qr7k2p<>uid://dwv12o1m5jhe0<>res://Character/CharacterStateMachine.gd<>res://Character/GroundState.gd<>res://Character/AirState.gd<>res://Character/LandingState.gd<>res://Character/WallState.gd<>res://Character/StateDebug.gd
+::res://Character/::1688417102
+AirState.gd::GDScript::-1::1687919279::0::1::::AirState<>State<>::
+CharacterStateMachine.gd::GDScript::-1::1688417102::0::1::::CharacterStateMachine<>Node<>::
+GroundState.gd::GDScript::-1::1687920216::0::1::::GroundState<>State<>::
+LandingState.gd::GDScript::-1::1687972799::0::1::::LandingState<>State<>::
+player.gd::GDScript::-1::1688417102::0::1::::Player<>CharacterBody2D<>::
+player.tscn::PackedScene::616426973010021620::1688417101::0::1::::<><>::res://Character/player.gd<>uid://ctxcslneys1jg::::res://art/player/Character Idle 48x48.png<>uid://bftbj048hbytu::::res://art/player/player jump 48x48.png<>uid://8rjwdqx4gng::::res://art/player/player land 48x48.png<>uid://03uc0pgq1ahr::::res://art/player/run cycle 48x48.png<>uid://bgr0xr1qr7k2p::::res://art/player/wall land 48x48.png<>uid://dwv12o1m5jhe0::::res://art/player/Wall Slide 48x48.png<>res://Character/CharacterStateMachine.gd<>res://Character/GroundState.gd<>res://Character/AirState.gd<>res://Character/LandingState.gd<>res://Character/WallState.gd<>res://Character/StateDebug.gd
 State.gd::GDScript::-1::1687736147::0::1::::State<>Node<>::
-StateDebug.gd::GDScript::-1::1687815984::0::1::::<>Label<>::
-WallState.gd::GDScript::-1::1687815946::0::1::::WallState<>State<>::
-::res://Levels/::1687815985
-test_level.tscn::PackedScene::7119141241280449066::1687815985::0::1::::<><>::uid://b1xultvmwv21u<>uid://i1upyjxuxoxw
+StateDebug.gd::GDScript::-1::1687969235::0::1::::<>Label<>::
+WallState.gd::GDScript::-1::1687998383::0::1::::WallState<>State<>::
+::res://Levels/::1688139091
+test_level.tscn::PackedScene::7119141241280449066::1688139091::0::1::::<><>::uid://b1xultvmwv21u<>uid://i1upyjxuxoxw

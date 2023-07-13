@@ -9,7 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if wall_check.is_colliding() : 
-		text = "WALL"
-	else : 
-		text = ""
+	text = "State: " + state_machine.current_state.name
